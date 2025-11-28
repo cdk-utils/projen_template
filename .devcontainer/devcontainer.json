@@ -1,0 +1,20 @@
+{
+    "name": "CDK Utils Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:24",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "biomejs.biome",
+                "wraith13.bracket-lens",
+                "streetsidesoftware.code-spell-checker",
+                "ms-azuretools.vscode-containers",
+                "usernamehw.errorlens",
+                "github.vscode-pull-request-github",
+                "orta.vscode-jest",
+                "pflannery.vscode-versionlens"
+            ]
+        }
+    },
+    "postCreateCommand": "npm install -g projen@0.98.26",
+    "remoteUser": "node"
+}
