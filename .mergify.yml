@@ -30,7 +30,7 @@ pull_request_rules:
         add:
           - do-not-merge
     conditions:
-      - github.actor == 'Lorenzohidalgo'
+      - author=Lorenzohidalgo
       - -label~=(do-not-merge)
   - name: Auto Approve on admin PR
     actions:
@@ -41,7 +41,7 @@ pull_request_rules:
       review:
         type: APPROVE
     conditions:
-      - github.actor == 'Lorenzohidalgo'
-      - label==(do-not-merge)
+      - author=Lorenzohidalgo
+      - label=do-not-merge
 merge_queue:
   max_parallel_checks: 1

@@ -30,7 +30,7 @@ project.github?.mergify?.addRule({
       add: ["do-not-merge"],
     },
   },
-  conditions: ["github.actor == 'Lorenzohidalgo'", "-label~=(do-not-merge)"],
+  conditions: ["author=Lorenzohidalgo", "-label~=(do-not-merge)"],
 });
 project.github?.mergify?.addRule({
   name: "Auto Approve on admin PR",
@@ -41,10 +41,10 @@ project.github?.mergify?.addRule({
     },
     review: { type: "APPROVE" },
   },
-  conditions: ["github.actor == 'Lorenzohidalgo'", "label==(do-not-merge)"],
+  conditions: ["author=Lorenzohidalgo", "label=do-not-merge"],
 });
 
-project.release!.publisher.publishToNpm({
+project.release?.publisher.publishToNpm({
   registry: "npm.pkg.github.com",
 });
 
