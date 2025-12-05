@@ -50,5 +50,4 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
-!/.github/workflows/admin-auto-approve.yml
 !/.projenrc.ts

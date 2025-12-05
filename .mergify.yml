@@ -24,5 +24,24 @@ pull_request_rules:
       - -label~=(do-not-merge)
       - status-success=build
       - status-success=package-js
+  - name: Add Blocking label on default PRs
+    actions:
+      label:
+        add:
+          - do-not-merge
+    conditions:
+      - github.actor == 'Lorenzohidalgo'
+      - -label~=(do-not-merge)
+  - name: Auto Approve on admin PR
+    actions:
+      comment:
+        message: |-
+          @{{author}}, this PR was auto-approved.
+          Remember to remove the do-not-merge once ready to merge
+      review:
+        type: APPROVE
+    conditions:
+      - github.actor == 'Lorenzohidalgo'
+      - label==(do-not-merge)
 merge_queue:
   max_parallel_checks: 1

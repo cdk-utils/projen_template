@@ -1,5 +1,4 @@
 import { awscdk, ReleasableCommits } from "projen";
-import { JobPermission } from "projen/lib/github/workflows-model";
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: "Lorenzo Hidalgo Gadea",
@@ -24,47 +23,29 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 });
 
+project.github?.mergify?.addRule({
+  name: "Add Blocking label on default PRs",
+  actions: {
+    label: {
+      add: ["do-not-merge"],
+    },
+  },
+  conditions: ["github.actor == 'Lorenzohidalgo'", "-label~=(do-not-merge)"],
+});
+project.github?.mergify?.addRule({
+  name: "Auto Approve on admin PR",
+  actions: {
+    comment: {
+      message:
+        "@{{author}}, this PR was auto-approved.\nRemember to remove the do-not-merge once ready to merge",
+    },
+    review: { type: "APPROVE" },
+  },
+  conditions: ["github.actor == 'Lorenzohidalgo'", "label==(do-not-merge)"],
+});
+
 project.release!.publisher.publishToNpm({
   registry: "npm.pkg.github.com",
-});
-
-const autoApprove = project.github!.addWorkflow("admin-auto-approve");
-
-autoApprove.on({
-  pullRequestTarget: {},
-  workflowDispatch: {
-    inputs: {
-      logLevel: {
-        description: "Log level",
-        required: true,
-        default: "warning",
-      },
-      environment: {
-        description: "Environment to deploy",
-        required: false,
-        default: "staging",
-      },
-    },
-  },
-});
-autoApprove.addJobs({
-  autoApprove: {
-    runsOn: ["ubuntu-latest"],
-    permissions: {
-      pullRequests: JobPermission.WRITE,
-    },
-    if: "github.actor == 'Lorenzohidalgo'",
-    steps: [
-      {
-        uses: "actions-ecosystem/action-add-labels@v1",
-        with: { labels: "do-not-merge" },
-      },
-      {
-        uses: "hmarr/auto-approve-action@v4",
-        with: { "review-message": "Auto approved PR" },
-      },
-    ],
-  },
 });
 
 project.synth();
