@@ -32,6 +32,7 @@ pull_request_rules:
     conditions:
       - author=Lorenzohidalgo
       - -label~=(do-not-merge)
+      - -label~=(merge)
   - name: Auto Approve on admin PR
     actions:
       comment:
