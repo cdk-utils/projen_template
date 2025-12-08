@@ -29,9 +29,9 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Lorenzo Hidalgo Gadea",
-    "email": "lorenzo@lhidalgo.dev",
-    "organization": false
+    "name": "CDK Utils",
+    "email": "info@lhidalgo.dev",
+    "organization": true
   },
   "devDependencies": {
     "@biomejs/biome": "^2",
@@ -62,6 +62,7 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "version": "0.0.0",

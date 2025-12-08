@@ -1,8 +1,10 @@
 import { awscdk, ReleasableCommits } from "projen";
 
 const project = new awscdk.AwsCdkConstructLibrary({
-	author: "Lorenzo Hidalgo Gadea",
-	authorAddress: "lorenzo@lhidalgo.dev",
+	author: "CDK Utils",
+	authorAddress: "info@lhidalgo.dev",
+	authorOrganization: true,
+	copyrightOwner: "LHidalgo.dev",
 	cdkVersion: "2.1.0",
 	defaultReleaseBranch: "main",
 	releasableCommits: ReleasableCommits.featuresAndFixes(),
@@ -21,6 +23,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 			},
 		},
 	},
+	npmRegistryUrl: "https://npm.pkg.github.com"
 });
 
 project.github?.mergify?.addRule({
@@ -47,10 +50,6 @@ project.github?.mergify?.addRule({
 		review: { type: "APPROVE" },
 	},
 	conditions: ["author=Lorenzohidalgo", "label=do-not-merge"],
-});
-
-project.release?.publisher.publishToNpm({
-	registry: "npm.pkg.github.com",
 });
 
 project.synth();
