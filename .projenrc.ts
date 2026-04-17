@@ -19,11 +19,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
 	githubOptions: {
 		pullRequestLintOptions: {
 			semanticTitleOptions: {
-				types: ["feat", "fix", "docs", "chore"],
+				types: ["feat", "fix", "docs", "chore", "ci"],
 			},
 		},
 	},
-	npmRegistryUrl: "https://npm.pkg.github.com"
+	npmRegistryUrl: "https://npm.pkg.github.com",
 });
 
 project.github?.mergify?.addRule({

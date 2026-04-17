@@ -28,4 +28,5 @@ jobs:
             fix
             docs
             chore
+            ci
           requireScope: false
