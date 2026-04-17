@@ -4,12 +4,12 @@
 
 ## Classes <a name="Classes" id="Classes"></a>
 
-### Hello <a name="Hello" id="projen_template.Hello"></a>
+### Hello <a name="Hello" id="@cdk-utils/projen_template.Hello"></a>
 
-#### Initializers <a name="Initializers" id="projen_template.Hello.Initializer"></a>
+#### Initializers <a name="Initializers" id="@cdk-utils/projen_template.Hello.Initializer"></a>
 
 ```typescript
-import { Hello } from 'projen_template'
+import { Hello } from '@cdk-utils/projen_template'
 
 new Hello()
 ```
@@ -23,11 +23,11 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#projen_template.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#@cdk-utils/projen_template.Hello.sayHello">sayHello</a></code> | *No description.* |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="projen_template.Hello.sayHello"></a>
+##### `sayHello` <a name="sayHello" id="@cdk-utils/projen_template.Hello.sayHello"></a>
 
 ```typescript
 public sayHello(): string

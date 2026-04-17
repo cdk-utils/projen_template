@@ -9,7 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 	defaultReleaseBranch: "main",
 	releasableCommits: ReleasableCommits.featuresAndFixes(),
 	jsiiVersion: "~5.9.0",
-	name: "projen_template",
+	name: "@cdk-utils/projen_template",
 	projenrcTs: true,
 	repositoryUrl: "https://github.com/cdk-utils/projen_template.git",
 	eslint: false,
