@@ -15,6 +15,6 @@
             ]
         }
     },
-    "postCreateCommand": "npm install -g projen@0.98.26",
+    "postCreateCommand": "npm install -g projen",
     "remoteUser": "node"
 }
