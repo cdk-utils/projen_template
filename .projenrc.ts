@@ -1,4 +1,4 @@
-import { awscdk, ReleasableCommits } from "projen";
+import { awscdk, javascript, ReleasableCommits } from "projen";
 
 const project = new awscdk.AwsCdkConstructLibrary({
 	author: "CDK Utils",
@@ -12,6 +12,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 	name: "@cdk-utils/projen_template",
 	projenrcTs: true,
 	repositoryUrl: "https://github.com/cdk-utils/projen_template.git",
+	packageManager: javascript.NodePackageManager.NPM,
 	eslint: false,
 	prettier: false,
 	biome: true,

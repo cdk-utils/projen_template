@@ -59,6 +59,12 @@
   "keywords": [
     "cdk"
   ],
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "onFail": "ignore"
+    }
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "publishConfig": {
