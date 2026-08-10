@@ -54,7 +54,8 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.1.0",
-    "constructs": "^10.5.1"
+    "constructs": "^10.5.1",
+    "projen": "^0.99.51"
   },
   "keywords": [
     "cdk"
@@ -73,6 +74,14 @@
   "version": "0.0.0",
   "jest": {
     "coverageProvider": "v8",
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
     "testMatch": [
       "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
       "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)",
@@ -117,7 +126,7 @@
     }
   },
   "types": "lib/index.d.ts",
-  "stability": "stable",
+  "stability": "experimental",
   "jsii": {
     "outdir": "dist",
     "targets": {},

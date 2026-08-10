@@ -13,10 +13,15 @@ const project = new awscdk.AwsCdkConstructLibrary({
 	projenrcTs: true,
 	repositoryUrl: "https://github.com/cdk-utils/projen_template.git",
 	packageManager: javascript.NodePackageManager.NPM,
+	workflowNodeVersion: "24.x",
 	eslint: false,
 	prettier: false,
 	biome: true,
 	stale: true,
+	stability: "experimental",
+	minMajorVersion: 1,
+	compat: true,
+	docgen: true,
 	githubOptions: {
 		pullRequestLintOptions: {
 			semanticTitleOptions: {
@@ -24,7 +29,18 @@ const project = new awscdk.AwsCdkConstructLibrary({
 			},
 		},
 	},
+	jestOptions: {
+		jestConfig: {
+			coverageThreshold: {
+				branches: 80,
+				functions: 80,
+				lines: 80,
+				statements: 80,
+			},
+		},
+	},
 	npmRegistryUrl: "https://npm.pkg.github.com",
+	peerDeps: ["projen"],
 });
 
 project.github?.mergify?.addRule({
