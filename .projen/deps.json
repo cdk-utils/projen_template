@@ -78,6 +78,7 @@
     },
     {
       "name": "projen",
+      "version": ">=0.99.0",
       "type": "peer"
     }
   ],

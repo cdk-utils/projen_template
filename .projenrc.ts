@@ -40,7 +40,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
 		},
 	},
 	npmRegistryUrl: "https://npm.pkg.github.com",
-	peerDeps: ["projen"],
+	peerDeps: ["projen@>=0.99.0"],
+	peerDependencyOptions: {
+		pinnedDevDependency: false,
+	},
+	devDeps: ["projen@^0.101.31"],
 });
 
 project.github?.mergify?.addRule({
