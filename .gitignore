@@ -43,11 +43,12 @@ junit.xml
 !/.github/pull_request_template.md
 !/biome.jsonc
 !/test/
-!/tsconfig.dev.json
+!/tsconfig.json
+!/test/tsconfig.json
 !/src/
 /lib
 /dist/
+!/projenrc/tsconfig.json
 .jsii
-tsconfig.json
 !/API.md
 !/.projenrc.ts
