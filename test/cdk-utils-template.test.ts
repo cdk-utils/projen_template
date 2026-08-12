@@ -123,7 +123,7 @@ describe("CDKUtilsTemplate", () => {
 		expect(pkg.jest.coverageThreshold.global.statements).toBe(80);
 	});
 
-	test("defaults to GitHub Packages registry", () => {
+	test("publishes to public npm with provenance", () => {
 		const project = new CDKUtilsTemplate({
 			name: "@cdk-utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
@@ -132,22 +132,9 @@ describe("CDKUtilsTemplate", () => {
 		const snapshot = Testing.synth(project);
 		const pkg = snapshot["package.json"];
 
-		expect(pkg.publishConfig?.registry).toContain("npm.pkg.github.com");
-	});
-
-	test("can switch to public npm with trusted publishing", () => {
-		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
-			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
-			useGitHubPackages: false,
-		});
-
-		const snapshot = Testing.synth(project);
-		const pkg = snapshot["package.json"];
-
-		// Should not point to GitHub Packages
-		const registry = pkg.publishConfig?.registry ?? "";
-		expect(registry).not.toContain("npm.pkg.github.com");
+		// Should publish to public npm, not GitHub Packages
+		expect(pkg.publishConfig?.access).toBe("public");
+		expect(pkg.publishConfig?.registry).toBeUndefined();
 	});
 
 	test("sets minMajorVersion to 1", () => {
