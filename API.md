@@ -47,7 +47,6 @@ new CDKUtilsTemplate(options: CDKUtilsTemplateOptions)
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addGitIgnore">addGitIgnore</a></code> | Adds a .gitignore pattern. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addPackageIgnore">addPackageIgnore</a></code> | Adds patterns to be ignored by npm. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addTask">addTask</a></code> | Adds a new task to this project. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addTip">addTip</a></code> | Prints a "tip" message during synthesis. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.annotateGenerated">annotateGenerated</a></code> | Marks the provided file(s) as being generated. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.postSynthesize">postSynthesize</a></code> | Called after all components are synthesized. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.preSynthesize">preSynthesize</a></code> | Called before all components are synthesized. |
@@ -55,25 +54,19 @@ new CDKUtilsTemplate(options: CDKUtilsTemplateOptions)
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.runTaskCommand">runTaskCommand</a></code> | Returns the shell command to execute in order to run a task. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.synth">synth</a></code> | Synthesize all project files into `outdir`. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.tryFindFile">tryFindFile</a></code> | Finds a file at the specified relative path within this project and all its subprojects. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.tryFindJsonFile">tryFindJsonFile</a></code> | Finds a json file by name. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.tryFindObjectFile">tryFindObjectFile</a></code> | Finds an object file (like JsonFile, YamlFile, etc.) by name. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.tryRemoveFile">tryRemoveFile</a></code> | Finds a file at the specified relative path within this project and removes it. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addBins">addBins</a></code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addBundledDeps">addBundledDeps</a></code> | Defines bundled dependencies. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addCompileCommand">addCompileCommand</a></code> | DEPRECATED. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addDeps">addDeps</a></code> | Defines normal dependencies. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addDevDeps">addDevDeps</a></code> | Defines development/test dependencies. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addFields">addFields</a></code> | Directly set fields in `package.json`. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addKeywords">addKeywords</a></code> | Adds keywords to package.json (deduplicated). |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addPeerDeps">addPeerDeps</a></code> | Defines peer dependencies. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addScripts">addScripts</a></code> | Replaces the contents of multiple npm package.json scripts. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addTestCommand">addTestCommand</a></code> | DEPRECATED. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.hasScript">hasScript</a></code> | Indicates if a script by the name name is defined. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.removeScript">removeScript</a></code> | Removes the npm script (always successful). |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.renderWorkflowSetup">renderWorkflowSetup</a></code> | Returns the set of workflow steps which should be executed to bootstrap a workflow. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.setScript">setScript</a></code> | Replaces the contents of an npm package.json script. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addCdkDependencies">addCdkDependencies</a></code> | Adds dependencies to AWS CDK modules. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.addCdkTestDependencies">addCdkTestDependencies</a></code> | Adds AWS CDK modules as dev dependencies. |
 
 ---
 
@@ -184,22 +177,6 @@ Task properties.
 
 ---
 
-##### ~~`addTip`~~ <a name="addTip" id="@cdk-utils/projen_template.CDKUtilsTemplate.addTip"></a>
-
-```typescript
-public addTip(message: string): void
-```
-
-Prints a "tip" message during synthesis.
-
-###### `message`<sup>Required</sup> <a name="message" id="@cdk-utils/projen_template.CDKUtilsTemplate.addTip.parameter.message"></a>
-
-- *Type:* string
-
-The message.
-
----
-
 ##### `annotateGenerated` <a name="annotateGenerated" id="@cdk-utils/projen_template.CDKUtilsTemplate.annotateGenerated"></a>
 
 ```typescript
@@ -287,8 +264,10 @@ Synthesize all project files into `outdir`.
 2. Delete all generated files
 3. Synthesize all subprojects
 4. Synthesize all components of this project
-5. Call "postSynthesize()" for all components of this project
-6. Call "this.postSynthesize()"
+5. Call "projectCreation()" for all components, only if the project is being created for the first time
+6. Call "postSynthesize()" for all components of this project
+7. Call "this.postSynthesize()"
+8. Call "postProjectCreation()" for all components, only if the project is being created for the first time
 
 ##### `tryFindFile` <a name="tryFindFile" id="@cdk-utils/projen_template.CDKUtilsTemplate.tryFindFile"></a>
 
@@ -306,22 +285,6 @@ The file path.
 
 If this path is relative, it will be resolved
 from the root of _this_ project.
-
----
-
-##### ~~`tryFindJsonFile`~~ <a name="tryFindJsonFile" id="@cdk-utils/projen_template.CDKUtilsTemplate.tryFindJsonFile"></a>
-
-```typescript
-public tryFindJsonFile(filePath: string): JsonFile
-```
-
-Finds a json file by name.
-
-###### `filePath`<sup>Required</sup> <a name="filePath" id="@cdk-utils/projen_template.CDKUtilsTemplate.tryFindJsonFile.parameter.filePath"></a>
-
-- *Type:* string
-
-The file path.
 
 ---
 
@@ -394,20 +357,6 @@ be installed in the next `pnpm projen` run and the version will be recorded
 in your `package.json` file. You can upgrade manually or using `pnpm
 add/update`. If you wish to specify a version range use this syntax:
 `module@^7`.
-
----
-
-##### ~~`addCompileCommand`~~ <a name="addCompileCommand" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCompileCommand"></a>
-
-```typescript
-public addCompileCommand(commands: ...string[]): void
-```
-
-DEPRECATED.
-
-###### `commands`<sup>Required</sup> <a name="commands" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCompileCommand.parameter.commands"></a>
-
-- *Type:* ...string[]
 
 ---
 
@@ -529,36 +478,6 @@ The scripts to set.
 
 ---
 
-##### ~~`addTestCommand`~~ <a name="addTestCommand" id="@cdk-utils/projen_template.CDKUtilsTemplate.addTestCommand"></a>
-
-```typescript
-public addTestCommand(commands: ...string[]): void
-```
-
-DEPRECATED.
-
-###### `commands`<sup>Required</sup> <a name="commands" id="@cdk-utils/projen_template.CDKUtilsTemplate.addTestCommand.parameter.commands"></a>
-
-- *Type:* ...string[]
-
----
-
-##### ~~`hasScript`~~ <a name="hasScript" id="@cdk-utils/projen_template.CDKUtilsTemplate.hasScript"></a>
-
-```typescript
-public hasScript(name: string): boolean
-```
-
-Indicates if a script by the name name is defined.
-
-###### `name`<sup>Required</sup> <a name="name" id="@cdk-utils/projen_template.CDKUtilsTemplate.hasScript.parameter.name"></a>
-
-- *Type:* string
-
-The name of the script.
-
----
-
 ##### `removeScript` <a name="removeScript" id="@cdk-utils/projen_template.CDKUtilsTemplate.removeScript"></a>
 
 ```typescript
@@ -612,40 +531,6 @@ The script name.
 - *Type:* string
 
 The command to execute.
-
----
-
-##### ~~`addCdkDependencies`~~ <a name="addCdkDependencies" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCdkDependencies"></a>
-
-```typescript
-public addCdkDependencies(deps: ...string[]): void
-```
-
-Adds dependencies to AWS CDK modules.
-
-Since this is a library project, dependencies will be added as peer dependencies.
-
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCdkDependencies.parameter.deps"></a>
-
-- *Type:* ...string[]
-
-names of cdk modules (e.g. `@aws-cdk/aws-lambda`).
-
----
-
-##### ~~`addCdkTestDependencies`~~ <a name="addCdkTestDependencies" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCdkTestDependencies"></a>
-
-```typescript
-public addCdkTestDependencies(deps: ...string[]): void
-```
-
-Adds AWS CDK modules as dev dependencies.
-
-###### `deps`<sup>Required</sup> <a name="deps" id="@cdk-utils/projen_template.CDKUtilsTemplate.addCdkTestDependencies.parameter.deps"></a>
-
-- *Type:* ...string[]
-
-names of cdk modules (e.g. `@aws-cdk/aws-lambda`).
 
 ---
 
@@ -754,21 +639,16 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.defaultTask">defaultTask</a></code> | <code>projen.Task</code> | This is the "default" task, the one that executes "projen". |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.initProject">initProject</a></code> | <code>projen.InitProject</code> | The options used when this project is bootstrapped via `projen new`. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.parent">parent</a></code> | <code>projen.Project</code> | A parent project. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.projectType">projectType</a></code> | <code>projen.ProjectType</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.autoApprove">autoApprove</a></code> | <code>projen.github.AutoApprove</code> | Auto approve set up for this project. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.devContainer">devContainer</a></code> | <code>projen.vscode.DevContainer</code> | Access for .devcontainer.json (used for GitHub Codespaces). |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.allowLibraryDependencies">allowLibraryDependencies</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.artifactsDirectory">artifactsDirectory</a></code> | <code>string</code> | The build output directory. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.artifactsJavascriptDirectory">artifactsJavascriptDirectory</a></code> | <code>string</code> | The location of the npm tarball after build (`${artifactsDirectory}/js`). |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.bundler">bundler</a></code> | <code>projen.javascript.Bundler</code> | *No description.* |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.entrypoint">entrypoint</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.manifest">manifest</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.npmrc">npmrc</a></code> | <code>projen.javascript.NpmConfig</code> | The .npmrc file. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.package">package</a></code> | <code>projen.javascript.NodePackage</code> | API for managing the node package. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.packageManager">packageManager</a></code> | <code>projen.javascript.NodePackageManager</code> | The package manager to use. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.runScriptCommand">runScriptCommand</a></code> | <code>string</code> | The command to use to run scripts (e.g. `yarn run` or `npm run` depends on the package manager). |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.autoMerge">autoMerge</a></code> | <code>projen.github.AutoMerge</code> | Component that sets up mergify for merging approved pull requests. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.biome">biome</a></code> | <code>projen.javascript.Biome</code> | *No description.* |
@@ -779,11 +659,11 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.minNodeVersion">minNodeVersion</a></code> | <code>string</code> | The minimum node version required by this package to function. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.npmignore">npmignore</a></code> | <code>projen.IgnoreFile</code> | The .npmignore file. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.prettier">prettier</a></code> | <code>projen.javascript.Prettier</code> | *No description.* |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.publisher">publisher</a></code> | <code>projen.release.Publisher</code> | Package publisher. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.release">release</a></code> | <code>projen.release.Release</code> | Release management. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.upgradeWorkflow">upgradeWorkflow</a></code> | <code>projen.javascript.UpgradeDependencies</code> | The upgrade workflow. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.docsDirectory">docsDirectory</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.libdir">libdir</a></code> | <code>string</code> | The directory in which compiled .js files reside. |
+| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.runner">runner</a></code> | <code>projen.typescript.TypeScriptRunner</code> | The TypeScript runner used for executing TypeScript files. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.srcdir">srcdir</a></code> | <code>string</code> | The directory in which the .ts sources reside. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.testdir">testdir</a></code> | <code>string</code> | The directory in which tests reside. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.tsconfigDev">tsconfigDev</a></code> | <code>projen.javascript.TypescriptConfig</code> | A typescript configuration file which covers all files (sources, tests, projen). |
@@ -794,7 +674,6 @@ When given a project, this it the project itself.
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.tsconfigEslint">tsconfigEslint</a></code> | <code>projen.javascript.TypescriptConfig</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.cdkDeps">cdkDeps</a></code> | <code>projen.awscdk.AwsCdkDeps</code> | *No description.* |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.cdkVersion">cdkVersion</a></code> | <code>string</code> | The target CDK version for this library. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplate.property.version">version</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1065,7 +944,9 @@ the project is being ejected.
 
 ---
 
-##### `initProject`<sup>Optional</sup> <a name="initProject" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.initProject"></a>
+##### ~~`initProject`~~<sup>Optional</sup> <a name="initProject" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.initProject"></a>
+
+- *Deprecated:* use the `initProject` argument passed to `Component.projectCreation()` instead.
 
 ```typescript
 public readonly initProject: InitProject;
@@ -1092,16 +973,6 @@ public readonly parent: Project;
 A parent project.
 
 If undefined, this is the root project.
-
----
-
-##### `projectType`<sup>Required</sup> <a name="projectType" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.projectType"></a>
-
-```typescript
-public readonly projectType: ProjectType;
-```
-
-- *Type:* projen.ProjectType
 
 ---
 
@@ -1173,18 +1044,6 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### ~~`allowLibraryDependencies`~~<sup>Required</sup> <a name="allowLibraryDependencies" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.allowLibraryDependencies"></a>
-
-- *Deprecated:* use `package.allowLibraryDependencies`
-
-```typescript
-public readonly allowLibraryDependencies: boolean;
-```
-
-- *Type:* boolean
-
----
-
 ##### `artifactsDirectory`<sup>Required</sup> <a name="artifactsDirectory" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.artifactsDirectory"></a>
 
 ```typescript
@@ -1223,30 +1082,6 @@ public readonly bundler: Bundler;
 
 ---
 
-##### ~~`entrypoint`~~<sup>Required</sup> <a name="entrypoint" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.entrypoint"></a>
-
-- *Deprecated:* use `package.entrypoint`
-
-```typescript
-public readonly entrypoint: string;
-```
-
-- *Type:* string
-
----
-
-##### ~~`manifest`~~<sup>Required</sup> <a name="manifest" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.manifest"></a>
-
-- *Deprecated:* use `package.addField(x, y)`
-
-```typescript
-public readonly manifest: any;
-```
-
-- *Type:* any
-
----
-
 ##### `npmrc`<sup>Required</sup> <a name="npmrc" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.npmrc"></a>
 
 ```typescript
@@ -1268,20 +1103,6 @@ public readonly package: NodePackage;
 - *Type:* projen.javascript.NodePackage
 
 API for managing the node package.
-
----
-
-##### ~~`packageManager`~~<sup>Required</sup> <a name="packageManager" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.packageManager"></a>
-
-- *Deprecated:* use `package.packageManager`
-
-```typescript
-public readonly packageManager: NodePackageManager;
-```
-
-- *Type:* projen.javascript.NodePackageManager
-
-The package manager to use.
 
 ---
 
@@ -1407,23 +1228,6 @@ public readonly prettier: Prettier;
 
 ---
 
-##### ~~`publisher`~~<sup>Optional</sup> <a name="publisher" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.publisher"></a>
-
-- *Deprecated:* use `release.publisher`.
-
-```typescript
-public readonly publisher: Publisher;
-```
-
-- *Type:* projen.release.Publisher
-
-Package publisher.
-
-This will be `undefined` if the project does not have a
-release workflow.
-
----
-
 ##### `release`<sup>Optional</sup> <a name="release" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.release"></a>
 
 ```typescript
@@ -1467,6 +1271,18 @@ public readonly libdir: string;
 - *Type:* string
 
 The directory in which compiled .js files reside.
+
+---
+
+##### `runner`<sup>Required</sup> <a name="runner" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.runner"></a>
+
+```typescript
+public readonly runner: TypeScriptRunner;
+```
+
+- *Type:* projen.typescript.TypeScriptRunner
+
+The TypeScript runner used for executing TypeScript files.
 
 ---
 
@@ -1577,18 +1393,6 @@ public readonly cdkVersion: string;
 - *Type:* string
 
 The target CDK version for this library.
-
----
-
-##### ~~`version`~~<sup>Required</sup> <a name="version" id="@cdk-utils/projen_template.CDKUtilsTemplate.property.version"></a>
-
-- *Deprecated:* use `cdkVersion`
-
-```typescript
-public readonly version: string;
-```
-
-- *Type:* string
 
 ---
 
