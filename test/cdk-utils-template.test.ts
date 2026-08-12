@@ -4,7 +4,7 @@ import { CDKUtilsTemplate } from "../src";
 describe("CDKUtilsTemplate", () => {
 	test("synthesizes with minimal options", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -13,13 +13,13 @@ describe("CDKUtilsTemplate", () => {
 		// Verify package.json has the correct defaults
 		expect(snapshot["package.json"]).toBeDefined();
 		const pkg = snapshot["package.json"];
-		expect(pkg.name).toBe("@cdk-utils/test-construct");
+		expect(pkg.name).toBe("@cdk_utils/test-construct");
 		expect(pkg.stability).toBe("experimental");
 	});
 
 	test("uses Biome and disables ESLint/Prettier", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -36,7 +36,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("sets CDK version as peer dependency with caret range", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 			cdkVersion: "2.180.0",
 		});
@@ -49,7 +49,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("uses default CDK version when not specified", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -61,7 +61,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("uses NPM as package manager", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -74,7 +74,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("sets Node 24.x in CI workflows", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -86,7 +86,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("enables compat (jsii-diff) checking", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -98,7 +98,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("enables docgen (jsii-docgen)", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -110,7 +110,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("sets 80% coverage threshold", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -125,7 +125,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("publishes to public npm with provenance", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -139,7 +139,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("sets minMajorVersion to 1", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -151,7 +151,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("accepts additional peer dependencies", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 			peerDeps: ["@aws-cdk/aws-lambda-python-alpha@^2.160.0-alpha.0"],
 		});
@@ -166,7 +166,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("includes mergify rules with default owner", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 		});
 
@@ -179,7 +179,7 @@ describe("CDKUtilsTemplate", () => {
 
 	test("allows customizing the github owner for mergify", () => {
 		const project = new CDKUtilsTemplate({
-			name: "@cdk-utils/test-construct",
+			name: "@cdk_utils/test-construct",
 			repositoryUrl: "https://github.com/cdk-utils/test-construct.git",
 			githubOwner: "custom-user",
 		});

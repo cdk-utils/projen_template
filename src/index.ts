@@ -69,7 +69,7 @@ export interface MavenPublishConfig {
  */
 export interface CDKUtilsTemplateOptions {
 	/**
-	 * The scoped package name (e.g. `@cdk-utils/lambda`).
+	 * The scoped package name (e.g. `@cdk_utils/lambda`).
 	 */
 	readonly name: string;
 

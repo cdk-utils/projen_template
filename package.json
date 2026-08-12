@@ -1,5 +1,5 @@
 {
-  "name": "@cdk-utils/projen_template",
+  "name": "@cdk_utils/projen_template",
   "repository": {
     "type": "git",
     "url": "https://github.com/cdk-utils/projen_template.git"
