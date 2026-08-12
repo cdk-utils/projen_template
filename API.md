@@ -1452,21 +1452,21 @@ const cDKUtilsTemplateOptions: CDKUtilsTemplateOptions = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.name">name</a></code> | <code>string</code> | The scoped package name (e.g. `@cdk-utils/lambda`). |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.repositoryUrl">repositoryUrl</a></code> | <code>string</code> | Git repository URL. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | Additional bundled dependencies. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.cdkVersion">cdkVersion</a></code> | <code>string</code> | Minimum CDK version to support. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.description">description</a></code> | <code>string</code> | Package description. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Additional dev dependencies. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.githubOwner">githubOwner</a></code> | <code>string</code> | GitHub username of the repo admin (for mergify auto-approve rules). |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords for npm discovery. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Additional peer dependencies. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.publishToGo">publishToGo</a></code> | <code><a href="#@cdk-utils/projen_template.GoPublishConfig">GoPublishConfig</a></code> | Publish to Go module repository. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.publishToMaven">publishToMaven</a></code> | <code><a href="#@cdk-utils/projen_template.MavenPublishConfig">MavenPublishConfig</a></code> | Publish to Maven Central. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.publishToNuget">publishToNuget</a></code> | <code><a href="#@cdk-utils/projen_template.NugetPublishConfig">NugetPublishConfig</a></code> | Publish to NuGet. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.publishToPypi">publishToPypi</a></code> | <code><a href="#@cdk-utils/projen_template.PypiPublishConfig">PypiPublishConfig</a></code> | Publish to PyPI. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.semanticTitleTypes">semanticTitleTypes</a></code> | <code>string[]</code> | Semantic title types for PR linting. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.stability">stability</a></code> | <code>string</code> | Package stability level. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.name">name</a></code> | <code>string</code> | The scoped package name (e.g. `@cdk_utils/lambda`). |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.repositoryUrl">repositoryUrl</a></code> | <code>string</code> | Git repository URL. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.bundledDeps">bundledDeps</a></code> | <code>string[]</code> | Additional bundled dependencies. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.cdkVersion">cdkVersion</a></code> | <code>string</code> | Minimum CDK version to support. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.description">description</a></code> | <code>string</code> | Package description. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.devDeps">devDeps</a></code> | <code>string[]</code> | Additional dev dependencies. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.githubOwner">githubOwner</a></code> | <code>string</code> | GitHub username of the repo admin (for mergify auto-approve rules). |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.keywords">keywords</a></code> | <code>string[]</code> | Keywords for npm discovery. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.peerDeps">peerDeps</a></code> | <code>string[]</code> | Additional peer dependencies. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.publishToGo">publishToGo</a></code> | <code><a href="#@cdk_utils/projen_template.GoPublishConfig">GoPublishConfig</a></code> | Publish to Go module repository. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.publishToMaven">publishToMaven</a></code> | <code><a href="#@cdk_utils/projen_template.MavenPublishConfig">MavenPublishConfig</a></code> | Publish to Maven Central. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.publishToNuget">publishToNuget</a></code> | <code><a href="#@cdk_utils/projen_template.NugetPublishConfig">NugetPublishConfig</a></code> | Publish to NuGet. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.publishToPypi">publishToPypi</a></code> | <code><a href="#@cdk_utils/projen_template.PypiPublishConfig">PypiPublishConfig</a></code> | Publish to PyPI. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.semanticTitleTypes">semanticTitleTypes</a></code> | <code>string[]</code> | Semantic title types for PR linting. |
+| <code><a href="#@cdk_utils/projen_template.CDKUtilsTemplateOptions.property.stability">stability</a></code> | <code>string</code> | Package stability level. |
 
 ---
 
@@ -1669,7 +1669,7 @@ Change to `stable` once the API is frozen (1.0+).
 
 ---
 
-### GoPublishConfig <a name="GoPublishConfig" id="@cdk-utils/projen_template.GoPublishConfig"></a>
+### GoPublishConfig <a name="GoPublishConfig" id="@cdk_utils/projen_template.GoPublishConfig"></a>
 
 Configuration for publishing to a Go module repository.
 
