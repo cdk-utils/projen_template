@@ -1467,7 +1467,6 @@ const cDKUtilsTemplateOptions: CDKUtilsTemplateOptions = { ... }
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.publishToPypi">publishToPypi</a></code> | <code><a href="#@cdk-utils/projen_template.PypiPublishConfig">PypiPublishConfig</a></code> | Publish to PyPI. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.semanticTitleTypes">semanticTitleTypes</a></code> | <code>string[]</code> | Semantic title types for PR linting. |
 | <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.stability">stability</a></code> | <code>string</code> | Package stability level. |
-| <code><a href="#@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.useGitHubPackages">useGitHubPackages</a></code> | <code>boolean</code> | Whether to publish to GitHub Packages or public npm. |
 
 ---
 
@@ -1667,22 +1666,6 @@ public readonly stability: string;
 Package stability level.
 
 Change to `stable` once the API is frozen (1.0+).
-
----
-
-##### `useGitHubPackages`<sup>Optional</sup> <a name="useGitHubPackages" id="@cdk-utils/projen_template.CDKUtilsTemplateOptions.property.useGitHubPackages"></a>
-
-```typescript
-public readonly useGitHubPackages: boolean;
-```
-
-- *Type:* boolean
-- *Default:* true
-
-Whether to publish to GitHub Packages or public npm.
-
-When true, uses `https://npm.pkg.github.com`.
-When false, uses public npmjs.com with trusted publishing.
 
 ---
 

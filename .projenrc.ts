@@ -6,6 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 	authorOrganization: true,
 	copyrightOwner: "LHidalgo.dev",
 	cdkVersion: "2.1.0",
+	constructsVersion: "10.0.0",
 	defaultReleaseBranch: "main",
 	releasableCommits: ReleasableCommits.featuresAndFixes(),
 	jsiiVersion: "~5.9.0",
@@ -39,7 +40,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
 			},
 		},
 	},
-	npmRegistryUrl: "https://npm.pkg.github.com",
+	// Publish to public npm (was GitHub Packages)
+	releaseToNpm: true,
+	npmAccess: javascript.NpmAccess.PUBLIC,
+	npmProvenance: true,
 	peerDeps: ["projen@>=0.99.0"],
 	peerDependencyOptions: {
 		pinnedDevDependency: false,
