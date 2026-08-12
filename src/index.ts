@@ -280,7 +280,7 @@ export class CDKUtilsTemplate extends awscdk.AwsCdkConstructLibrary {
 			},
 
 			// === Dependencies (from consumer) ===
-			peerDeps: [...(options.peerDeps ?? []), "projen"],
+			peerDeps: [...(options.peerDeps ?? []), "projen@>=0.99.0"],
 			devDeps: options.devDeps,
 			bundledDeps: options.bundledDeps,
 		});
