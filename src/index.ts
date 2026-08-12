@@ -69,7 +69,7 @@ export interface MavenPublishConfig {
  */
 export interface CDKUtilsTemplateOptions {
 	/**
-	 * The scoped package name (e.g. `@cdk-utils/lambda`).
+	 * The scoped package name (e.g. `@cdk_utils/lambda`).
 	 */
 	readonly name: string;
 
@@ -165,15 +165,6 @@ export interface CDKUtilsTemplateOptions {
 	readonly semanticTitleTypes?: string[];
 
 	/**
-	 * Whether to publish to GitHub Packages or public npm.
-	 * When true, uses `https://npm.pkg.github.com`.
-	 * When false, uses public npmjs.com with trusted publishing.
-	 *
-	 * @default true
-	 */
-	readonly useGitHubPackages?: boolean;
-
-	/**
 	 * GitHub username of the repo admin (for mergify auto-approve rules).
 	 *
 	 * @default "Lorenzohidalgo"
@@ -197,7 +188,6 @@ export interface CDKUtilsTemplateOptions {
  */
 export class CDKUtilsTemplate extends awscdk.AwsCdkConstructLibrary {
 	constructor(options: CDKUtilsTemplateOptions) {
-		const useGitHubPackages = options.useGitHubPackages ?? true;
 		const githubOwner = options.githubOwner ?? "Lorenzohidalgo";
 
 		super({
@@ -229,13 +219,9 @@ export class CDKUtilsTemplate extends awscdk.AwsCdkConstructLibrary {
 
 			// === jsii & Publishing ===
 			jsiiVersion: "~5.9.0",
-			...(useGitHubPackages
-				? { npmRegistryUrl: "https://npm.pkg.github.com" }
-				: {
-						releaseToNpm: true,
-						npmAccess: javascript.NpmAccess.PUBLIC,
-						npmProvenance: true,
-					}),
+			releaseToNpm: true,
+			npmAccess: javascript.NpmAccess.PUBLIC,
+			npmProvenance: true,
 			publishToPypi: options.publishToPypi,
 			publishToNuget: options.publishToNuget,
 			publishToGo: options.publishToGo,
