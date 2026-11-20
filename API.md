@@ -4,6 +4,8 @@
 
 ### CDKUtilsTemplate <a name="CDKUtilsTemplate" id="@cdk_utils/projen_template.CDKUtilsTemplate"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable
+
 A projen template for cdk-utils CDK construct libraries.
 
 Bakes in all cdk-utils org standards:
